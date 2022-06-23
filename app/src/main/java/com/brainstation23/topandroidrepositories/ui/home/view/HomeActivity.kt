@@ -1,13 +1,18 @@
 package com.brainstation23.topandroidrepositories.ui.home.view
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.brainstation23.topandroidrepositories.R
 import com.brainstation23.topandroidrepositories.databinding.ActivityHomeBinding
+import com.brainstation23.topandroidrepositories.service.app.BrainApp
 import com.brainstation23.topandroidrepositories.ui.base.view.DaggerActivity
+import com.brainstation23.topandroidrepositories.ui.base.view.DaggerFragment
 import com.brainstation23.topandroidrepositories.ui.home.interactor.HomeMVPInteractor
 import com.brainstation23.topandroidrepositories.ui.home.presentation.HomeMVPPresenter
+import com.brainstation23.topandroidrepositories.ui.home.view.fragment.details.view.DetailsFragment
+import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.view.HomeFragment
+import com.brainstation23.topandroidrepositories.ui.home.view.model.HomeEvent
+import com.brainstation23.topandroidrepositories.utils.extension.replaceFragment
 import javax.inject.Inject
 
 class HomeActivity : DaggerActivity(), HomeMVPView {
@@ -16,18 +21,6 @@ class HomeActivity : DaggerActivity(), HomeMVPView {
     lateinit var presenter: HomeMVPPresenter<HomeMVPView, HomeMVPInteractor>
 
     private lateinit var binding: ActivityHomeBinding
-
-    companion object {
-        fun getStartIntent(context: Context): Intent = Intent(context, HomeActivity::class.java)
-
-        fun getStartCleanIntent(context: Context): Intent {
-            val intent = Intent(context, HomeActivity::class.java)
-            val flags =
-                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-            intent.addFlags(flags)
-            return intent
-        }
-    }
 
     override fun getLayoutResourceId(): View {
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -40,9 +33,22 @@ class HomeActivity : DaggerActivity(), HomeMVPView {
     }
 
     override fun initView() {
-        binding.apply {
+        presenter.request()
+    }
 
-        }
+    override fun onEvent(event: HomeEvent) {
+        BrainApp.navEvent = event
+        showFragment(fragment(event))
+    }
+
+    override fun showFragment(fragment: DaggerFragment) =
+        replaceFragment(fragment = fragment, frameId = R.id.container)
+
+    private fun fragment(homeEvent: HomeEvent): DaggerFragment = when (homeEvent) {
+        is HomeEvent.Home -> HomeFragment.newInstance()
+            .apply { event { event -> onEvent(event) } }
+        is HomeEvent.Details -> DetailsFragment.newInstance()
+            .apply { event { event -> onEvent(event) } }
     }
 
     override fun onDestroy() {

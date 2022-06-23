@@ -32,9 +32,6 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.brainstation23.topandroidrepositories.service.initializer.AppLoggerInitializer"
-                android:value="androidx.startup" />
-            <meta-data
                 android:name="com.brainstation23.topandroidrepositories.service.initializer.FrescoInitializer"
                 android:value="androidx.startup" />
             <meta-data

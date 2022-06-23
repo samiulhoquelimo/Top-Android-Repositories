@@ -8,4 +8,8 @@
     <string name="some_error">Some Error Occurred!</string>
     <string name="api_retry_error">Please retry</string>
     <string name="unauthorized_access">Unauthorized access</string>
+    <string name="sort_by_date">Sort by date</string>
+    <string name="sort_by_star">Sort by star</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

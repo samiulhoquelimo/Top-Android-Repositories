@@ -36,7 +36,7 @@ class TestFragment : DaggerFragment(), TestFragmentMVPView {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun setUp(view: View) {
+    override fun setup(view: View) {
 
     }
 

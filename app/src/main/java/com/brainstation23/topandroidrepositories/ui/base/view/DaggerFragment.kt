@@ -3,13 +3,18 @@ package com.brainstation23.topandroidrepositories.ui.base.view
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.brainstation23.topandroidrepositories.R
 import dagger.android.support.AndroidSupportInjection
 
 abstract class DaggerFragment : Fragment(), MVPView {
 
     private var parentActivity: DaggerActivity? = null
     protected var savedInstanceState: Bundle? = null
+
+    internal val p1: Int by lazy { ContextCompat.getColor(requireContext(), R.color.p1) }
+    internal val p2: Int by lazy { ContextCompat.getColor(requireContext(), R.color.p2) }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -27,12 +32,12 @@ abstract class DaggerFragment : Fragment(), MVPView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.savedInstanceState = savedInstanceState
-        setUp(view)
+        setup(view)
     }
 
     override fun isNetworkConnected(): Boolean = parentActivity?.isNetworkConnected() ?: true
 
     override fun getResString(uiText: UiText): String = parentActivity?.getResString(uiText) ?: ""
 
-    abstract fun setUp(view: View)
+    abstract fun setup(view: View)
 }

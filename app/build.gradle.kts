@@ -28,7 +28,7 @@ android {
     }
 
     buildTypes {
-        val baseUrl = "\"https://api.github.com/search/repositories\""
+        val baseUrl = "\"https://api.github.com\""
         val stringType = "String"
 
         defaultConfig {
@@ -66,9 +66,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
 
     // Android Support Libraries
-    implementation("androidx.core:core-ktx:1.8.0")
     implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
@@ -89,7 +87,7 @@ dependencies {
 
     // Fast-Android-Networking
     implementation("com.github.amitshekhariitbhu:Fast-Android-Networking:1.0.2")
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.7")
 
     // ReactiveX
     implementation("io.reactivex.rxjava3:rxjava:3.1.4")
@@ -119,6 +117,9 @@ dependencies {
 
     // Toasty
     implementation("com.github.GrenderG:Toasty:1.5.2")
+
+    // Timber
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Spin-Kit
     implementation("com.github.ybq:Android-SpinKit:1.4.0")

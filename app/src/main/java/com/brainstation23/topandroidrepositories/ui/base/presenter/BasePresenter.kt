@@ -8,8 +8,8 @@ import com.brainstation23.topandroidrepositories.ui.base.interactor.MVPInteracto
 import com.brainstation23.topandroidrepositories.ui.base.view.MVPView
 import com.brainstation23.topandroidrepositories.ui.base.view.UiText
 import com.brainstation23.topandroidrepositories.utils.SchedulerProvider
-import com.brainstation23.topandroidrepositories.utils.logger.AppLogger
 import io.reactivex.disposables.CompositeDisposable
+import timber.log.Timber
 import javax.net.ssl.HttpsURLConnection
 
 abstract class BasePresenter<V : MVPView, I : MVPInteractor> internal constructor(
@@ -81,7 +81,7 @@ abstract class BasePresenter<V : MVPView, I : MVPInteractor> internal constructo
                     }
                 }
             }
-            AppLogger.e(view.getResString(errorMessage))
+            Timber.e(view.getResString(errorMessage))
         }
     }
 

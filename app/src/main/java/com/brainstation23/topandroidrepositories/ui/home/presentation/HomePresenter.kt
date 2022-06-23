@@ -18,5 +18,41 @@ class HomePresenter<V : HomeMVPView, I : HomeMVPInteractor> @Inject internal con
     override fun onAttach(view: V?) {
         super.onAttach(view)
         getView()?.initView()
+        checkIsCached()
+    }
+
+    /**
+     * Checking if not cached, then api request calling
+     */
+    override fun checkIsCached() {
+        interactor?.apply {
+            compositeDisposable.add(
+                isCached().compose(schedulerProvider.ioToMainObservableScheduler())
+                    .subscribe(::request, ::handleApiError)
+            )
+        }
+    }
+
+    /**
+     * Api request calling, if not cached and net connection available
+     */
+    override fun request(isCached: Boolean) {
+        getView()?.let { view ->
+            if (isCached) {
+                return
+            }
+            if (!view.isNetworkConnected()) {
+                return
+            }
+            interactor?.apply {
+                compositeDisposable.addAll(
+                    searchApiCall()
+                        .compose(schedulerProvider.ioToMainObservableScheduler())
+                        .subscribe({ response ->
+                            response.items?.let { data -> seedGitRepository(data) }
+                        }, ::handleApiError)
+                )
+            }
+        }
     }
 }

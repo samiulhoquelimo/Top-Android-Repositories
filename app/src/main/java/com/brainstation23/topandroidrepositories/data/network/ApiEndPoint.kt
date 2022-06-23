@@ -5,5 +5,5 @@ import com.brainstation23.topandroidrepositories.utils.AppConstants
 object ApiEndPoint {
 
     private const val BASE_URL = AppConstants.BASE_URL
-    const val ENDPOINT_LOGIN = "$BASE_URL/login"
+    const val ENDPOINT_GITHUB_SEARCH = "$BASE_URL/search/repositories"
 }

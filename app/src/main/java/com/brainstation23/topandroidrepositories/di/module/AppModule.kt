@@ -5,8 +5,8 @@ import android.content.Context
 import androidx.room.Room
 import com.brainstation23.topandroidrepositories.BuildConfig
 import com.brainstation23.topandroidrepositories.data.database.AppDatabase
-import com.brainstation23.topandroidrepositories.data.database.repository.user.UserRepo
-import com.brainstation23.topandroidrepositories.data.database.repository.user.UserRepository
+import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepositoryRepo
+import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepositoryRepository
 import com.brainstation23.topandroidrepositories.data.network.ApiHelper
 import com.brainstation23.topandroidrepositories.data.network.AppApiHelper
 import com.brainstation23.topandroidrepositories.data.preferences.AppPreferenceHelper
@@ -18,7 +18,6 @@ import com.brainstation23.topandroidrepositories.utils.AppConstants
 import com.brainstation23.topandroidrepositories.utils.NetworkConstants
 import com.brainstation23.topandroidrepositories.utils.SchedulerProvider
 import com.brainstation23.topandroidrepositories.utils.extension.debugMode
-import com.brainstation23.topandroidrepositories.utils.logger.AppLoggerLoggingInterceptor
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -86,7 +85,6 @@ class AppModule {
         }
         debugMode {
             addNetworkInterceptor(StethoInterceptor())
-            addNetworkInterceptor(AppLoggerLoggingInterceptor())
         }
         connectTimeout(NetworkConstants.TIMEOUT_CONNECTION, TimeUnit.SECONDS)
         readTimeout(NetworkConstants.TIMEOUT_READ, TimeUnit.SECONDS)
@@ -106,6 +104,6 @@ class AppModule {
 
     @Provides
     @Singleton
-    internal fun provideUserRepoHelper(appDatabase: AppDatabase): UserRepo =
-        UserRepository(appDatabase.userDao())
+    internal fun provideGitRepositoryRepoHelper(appDatabase: AppDatabase): GitRepositoryRepo =
+        GitRepositoryRepository(appDatabase.gitRepositoryDao())
 }

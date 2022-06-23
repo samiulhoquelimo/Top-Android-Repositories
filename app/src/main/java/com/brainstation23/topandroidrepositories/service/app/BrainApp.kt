@@ -4,6 +4,7 @@ import android.app.Application
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.gsonparserfactory.GsonParserFactory
 import com.brainstation23.topandroidrepositories.di.component.DaggerAppComponent
+import com.brainstation23.topandroidrepositories.ui.home.view.model.HomeEvent
 import com.google.gson.Gson
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -25,6 +26,10 @@ class BrainApp : Application(), HasAndroidInjector {
     private val factory by lazy { GsonParserFactory(gson) }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
+    companion object {
+        var navEvent: HomeEvent = HomeEvent.Home
+    }
 
     override fun onCreate() {
         super.onCreate()
