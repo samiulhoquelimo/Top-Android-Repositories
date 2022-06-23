@@ -1,0 +1,3 @@
+package com.brainstation23.topandroidrepositories.ui.base.interactor
+
+interface MVPInteractor

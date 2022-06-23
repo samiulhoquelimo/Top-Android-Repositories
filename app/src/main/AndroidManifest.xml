@@ -3,25 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.brainstation23.topandroidrepositories">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".service.app.BrainApp"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/bs"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TopAndroidRepositories"
-        tools:targetApi="31">
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ui.home.view.HomeActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--Initializer-->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="com.brainstation23.topandroidrepositories.service.initializer.AppLoggerInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.brainstation23.topandroidrepositories.service.initializer.FrescoInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.brainstation23.topandroidrepositories.service.initializer.StethoInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.brainstation23.topandroidrepositories.service.initializer.ToastyInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
     </application>
 
 </manifest>
