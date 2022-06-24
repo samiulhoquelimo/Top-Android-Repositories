@@ -12,4 +12,6 @@ interface HomeMVPView : MVPView {
     fun onEvent(event: HomeEvent = BrainApp.navEvent)
 
     fun showFragment(fragment: DaggerFragment)
+
+    fun refresh(isNeeded: Boolean)
 }

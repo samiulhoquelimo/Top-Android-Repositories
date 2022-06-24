@@ -1,8 +1,9 @@
 package com.brainstation23.topandroidrepositories.utils
 
 object NetworkConstants {
+    internal const val API = "API"
     internal const val ACCEPT = "Accept"
-    internal const val APPLICATION_JSON = "application/json"
+    internal const val APPLICATION_JSON = "application/vnd.github.v3.text-match+json"
 
     internal const val PACKAGE = "package"
     internal const val VERSION = "version"

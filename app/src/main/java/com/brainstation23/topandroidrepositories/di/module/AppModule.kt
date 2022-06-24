@@ -3,6 +3,7 @@ package com.brainstation23.topandroidrepositories.di.module
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import com.androidnetworking.interceptors.HttpLoggingInterceptor
 import com.brainstation23.topandroidrepositories.BuildConfig
 import com.brainstation23.topandroidrepositories.data.database.AppDatabase
 import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepositoryRepo
@@ -25,6 +26,7 @@ import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
 import okhttp3.OkHttpClient
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -85,6 +87,9 @@ class AppModule {
         }
         debugMode {
             addNetworkInterceptor(StethoInterceptor())
+            addNetworkInterceptor(HttpLoggingInterceptor { message ->
+                Timber.tag(NetworkConstants.API).d(message)
+            })
         }
         connectTimeout(NetworkConstants.TIMEOUT_CONNECTION, TimeUnit.SECONDS)
         readTimeout(NetworkConstants.TIMEOUT_READ, TimeUnit.SECONDS)

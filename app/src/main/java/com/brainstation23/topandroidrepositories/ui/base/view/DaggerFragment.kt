@@ -35,6 +35,22 @@ abstract class DaggerFragment : Fragment(), MVPView {
         setup(view)
     }
 
+    override fun success(uiText: UiText) {
+        parentActivity?.success(uiText)
+    }
+
+    override fun error(uiText: UiText) {
+        parentActivity?.error(uiText)
+    }
+
+    override fun apiError(error: String?) {
+        parentActivity?.apiError(error)
+    }
+
+    override fun noInternetAlert() {
+        parentActivity?.noInternetAlert()
+    }
+
     override fun isNetworkConnected(): Boolean = parentActivity?.isNetworkConnected() ?: true
 
     override fun getResString(uiText: UiText): String = parentActivity?.getResString(uiText) ?: ""

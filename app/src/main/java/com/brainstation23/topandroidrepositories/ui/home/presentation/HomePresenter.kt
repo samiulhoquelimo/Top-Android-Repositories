@@ -1,6 +1,9 @@
 package com.brainstation23.topandroidrepositories.ui.home.presentation
 
+import com.brainstation23.topandroidrepositories.R
+import com.brainstation23.topandroidrepositories.data.network.response.GithubRepositoryResponse
 import com.brainstation23.topandroidrepositories.ui.base.presenter.BasePresenter
+import com.brainstation23.topandroidrepositories.ui.base.view.UiText
 import com.brainstation23.topandroidrepositories.ui.home.interactor.HomeMVPInteractor
 import com.brainstation23.topandroidrepositories.ui.home.view.HomeMVPView
 import com.brainstation23.topandroidrepositories.utils.SchedulerProvider
@@ -21,9 +24,6 @@ class HomePresenter<V : HomeMVPView, I : HomeMVPInteractor> @Inject internal con
         checkIsCached()
     }
 
-    /**
-     * Checking if not cached, then api request calling
-     */
     override fun checkIsCached() {
         interactor?.apply {
             compositeDisposable.add(
@@ -33,24 +33,35 @@ class HomePresenter<V : HomeMVPView, I : HomeMVPInteractor> @Inject internal con
         }
     }
 
-    /**
-     * Api request calling, if not cached and net connection available
-     */
     override fun request(isCached: Boolean) {
         getView()?.let { view ->
             if (isCached) {
+                view.success(UiText.StringResource(R.string.load_from_cached_data))
+                view.onEvent()
                 return
             }
             if (!view.isNetworkConnected()) {
+                view.onEvent()
                 return
             }
             interactor?.apply {
                 compositeDisposable.addAll(
                     searchApiCall()
                         .compose(schedulerProvider.ioToMainObservableScheduler())
-                        .subscribe({ response ->
-                            response.items?.let { data -> seedGitRepository(data) }
-                        }, ::handleApiError)
+                        .subscribe(::saveToDb, ::handleApiError)
+                )
+            }
+        }
+    }
+
+    private fun saveToDb(response: GithubRepositoryResponse) {
+        getView()?.let { view ->
+            view.success(UiText.StringResource(R.string.cached))
+            interactor?.apply {
+                compositeDisposable.addAll(
+                    seedGitRepository(response.items)
+                        .compose(schedulerProvider.ioToMainObservableScheduler())
+                        .subscribe(view::refresh, ::handleApiError)
                 )
             }
         }

@@ -38,6 +38,9 @@
                 android:name="com.brainstation23.topandroidrepositories.service.initializer.StethoInitializer"
                 android:value="androidx.startup" />
             <meta-data
+                android:name="com.brainstation23.topandroidrepositories.service.initializer.TimberInitializer"
+                android:value="androidx.startup" />
+            <meta-data
                 android:name="com.brainstation23.topandroidrepositories.service.initializer.ToastyInitializer"
                 android:value="androidx.startup" />
         </provider>

@@ -3,6 +3,7 @@ package com.brainstation23.topandroidrepositories.data.network.response.model
 import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepository
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import timber.log.Timber
 
 data class Item(
     @Expose @SerializedName("id") var id: Int? = null,
@@ -87,11 +88,13 @@ data class Item(
 )
 
 fun Item.toGitRepository(): GitRepository {
+    Timber.d("convert, ${this.id}")
     return GitRepository(
-        name = name,
-        description = description,
-        date = updatedAt,
-        image = owner?.avatarUrl,
-        star = stargazersCount
+        id = this.id,
+        name = this.name,
+        description = this.description,
+        date = this.updatedAt,
+        image = this.owner?.avatarUrl,
+        star = this.stargazersCount
     )
 }

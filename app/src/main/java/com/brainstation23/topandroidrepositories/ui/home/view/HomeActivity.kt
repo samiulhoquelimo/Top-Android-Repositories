@@ -32,13 +32,16 @@ class HomeActivity : DaggerActivity(), HomeMVPView {
         presenter.onAttach(this)
     }
 
-    override fun initView() {
-        presenter.request()
-    }
+    override fun initView() = Unit
 
     override fun onEvent(event: HomeEvent) {
         BrainApp.navEvent = event
         showFragment(fragment(event))
+    }
+
+    override fun refresh(isNeeded: Boolean) = when (isNeeded) {
+        true -> onEvent()
+        false -> Unit
     }
 
     override fun showFragment(fragment: DaggerFragment) =

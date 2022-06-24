@@ -10,8 +10,6 @@ import io.reactivex.Observable
 
 interface HomeFragmentMVPInteractor : MVPInteractor {
 
-    fun searchApiCall(request: GithubRepositoryRequest = GithubRepositoryRequest()): Observable<GithubRepositoryResponse>
-
     fun seedGitRepository(data: List<Item>?): Observable<Boolean>
 
     fun fetchGitRepository(): Observable<List<GitRepository>>

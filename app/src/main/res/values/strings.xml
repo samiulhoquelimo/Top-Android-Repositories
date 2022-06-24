@@ -4,12 +4,15 @@
     <string name="sync">Sync</string>
     <string name="sort">Sort</string>
     <string name="api_default_error">Something wrong happened</string>
+    <string name="no_network_message">Unable to connect to server. Check your internet connection and try again.</string>
     <string name="connection_error">Internet connection lost</string>
     <string name="some_error">Some Error Occurred!</string>
     <string name="api_retry_error">Please retry</string>
     <string name="unauthorized_access">Unauthorized access</string>
     <string name="sort_by_date">Sort by date</string>
     <string name="sort_by_star">Sort by star</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="load_from_cached_data">Load from cached data</string>
+    <string name="success">Success</string>
+    <string name="cached">Cached</string>
+    <string name="failed">Failed</string>
 </resources>
