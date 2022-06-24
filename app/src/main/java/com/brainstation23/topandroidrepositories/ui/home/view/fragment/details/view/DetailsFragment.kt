@@ -12,6 +12,7 @@ import com.brainstation23.topandroidrepositories.ui.base.view.DaggerFragment
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.details.interactor.DetailsFragmentMVPInteractor
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.details.presentation.DetailsFragmentMVPPresenter
 import com.brainstation23.topandroidrepositories.ui.home.view.model.HomeEvent
+import com.brainstation23.topandroidrepositories.utils.extension.toDateString
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
@@ -29,7 +30,6 @@ class DetailsFragment : DaggerFragment(), DetailsFragmentMVPView {
     companion object {
         private const val KEY_ID = "key_id"
 
-        const val TAG: String = "DetailsFragment"
         fun newInstance(id: Int): DetailsFragment = DetailsFragment().apply {
             arguments = bundleOf(KEY_ID to id)
         }
@@ -55,10 +55,11 @@ class DetailsFragment : DaggerFragment(), DetailsFragmentMVPView {
     override fun parseData(data: GitRepository) {
         binding.apply {
             with(data) {
-                name?.let { name -> tvName.text = name }
-                date?.let { date -> tvLastUpdate.text = date }
-                description?.let { description -> tvDescription.text = description }
                 image?.let { image -> load(image) }
+                name?.let { name -> tvName.text = name }
+                date?.let { date -> tvLastUpdate.text = date.toDateString() }
+                star?.let { star -> tvStar.text = star.toString() }
+                description?.let { description -> tvDescription.text = description }
             }
         }
     }

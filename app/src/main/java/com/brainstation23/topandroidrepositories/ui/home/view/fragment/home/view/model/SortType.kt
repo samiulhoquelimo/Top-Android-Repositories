@@ -2,6 +2,8 @@ package com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.vie
 
 sealed class SortType(val type: Int) {
     object None : SortType(0)
-    object Date : SortType(1)
-    object Star : SortType(2)
+    object DateAsc : SortType(1)
+    object DateDesc : SortType(2)
+    object StarAsc : SortType(3)
+    object StarDesc : SortType(4)
 }

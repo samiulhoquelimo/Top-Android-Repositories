@@ -8,6 +8,7 @@ import com.brainstation23.topandroidrepositories.R
 import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepository
 import com.brainstation23.topandroidrepositories.databinding.ListItemHomeBinding
 import com.brainstation23.topandroidrepositories.ui.base.view.BaseViewHolder
+import com.brainstation23.topandroidrepositories.utils.extension.toDateString
 
 class HomeAdapter(
     private val data: MutableList<GitRepository> = ArrayList()
@@ -33,16 +34,18 @@ class HomeAdapter(
         private val binding = ListItemHomeBinding.bind(view)
 
         override fun clear() {
-            binding.tvName.text = ""
-            binding.tvDate.text = ""
-            binding.tvStar.text = ""
+            binding.apply {
+                tvName.text = ""
+                tvDate.text = ""
+                tvStar.text = ""
+            }
         }
 
         override fun onBind(position: Int) {
             val (id, name, _, date, _, star) = data[position]
             binding.apply {
                 tvName.text = name
-                tvDate.text = date
+                tvDate.text = date?.toDateString()
                 tvStar.text = star.toString()
             }
             itemView.setOnClickListener { id?.let { id_ -> click?.invoke(id_) } }

@@ -8,6 +8,14 @@ interface GitRepositoryRepo {
 
     fun load(): Observable<List<GitRepository>>
 
+    fun loadSortByDateAsc(): Observable<List<GitRepository>>
+
+    fun loadSortByDateDesc(): Observable<List<GitRepository>>
+
+    fun loadSortByStarAsc(): Observable<List<GitRepository>>
+
+    fun loadSortByStarDesc(): Observable<List<GitRepository>>
+
     fun loadById(id: Int): Observable<GitRepository>
 
     fun delete(): Observable<Boolean>

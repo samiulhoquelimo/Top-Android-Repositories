@@ -8,9 +8,7 @@ import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.view
 interface HomeFragmentMVPPresenter<V : HomeFragmentMVPView, I : HomeFragmentMVPInteractor> :
     MVPPresenter<V, I> {
 
-    fun fetch()
+    fun fetch(type: SortType = SortType.None)
 
     fun request()
-
-    fun sort(type: SortType = SortType.None)
 }

@@ -1,6 +1,7 @@
 package com.brainstation23.topandroidrepositories.data.network.response.model
 
 import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepository
+import com.brainstation23.topandroidrepositories.utils.extension.toOffsetDateTime
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import timber.log.Timber
@@ -93,7 +94,7 @@ fun Item.toGitRepository(): GitRepository {
         id = this.id,
         name = this.name,
         description = this.description,
-        date = this.updatedAt,
+        date = this.updatedAt?.toOffsetDateTime(),
         image = this.owner?.avatarUrl,
         star = this.stargazersCount
     )

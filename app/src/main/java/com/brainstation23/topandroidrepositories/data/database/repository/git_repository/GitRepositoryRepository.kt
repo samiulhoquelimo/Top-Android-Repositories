@@ -14,6 +14,18 @@ class GitRepositoryRepository @Inject constructor(private val dao: GitRepository
 
     override fun load(): Observable<List<GitRepository>> = Observable.fromCallable { dao.load() }
 
+    override fun loadSortByDateAsc(): Observable<List<GitRepository>> =
+        Observable.fromCallable { dao.loadSortByDateAsc() }
+
+    override fun loadSortByDateDesc(): Observable<List<GitRepository>> =
+        Observable.fromCallable { dao.loadSortByDateDesc() }
+
+    override fun loadSortByStarAsc(): Observable<List<GitRepository>> =
+        Observable.fromCallable { dao.loadSortByStarAsc() }
+
+    override fun loadSortByStarDesc(): Observable<List<GitRepository>> =
+        Observable.fromCallable { dao.loadSortByStarDesc() }
+
     override fun loadById(id: Int): Observable<GitRepository> =
         Observable.fromCallable { dao.loadById(id) }
 

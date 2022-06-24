@@ -5,6 +5,47 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.brainstation23.topandroidrepositories.BuildConfig
+import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepository
+import com.brainstation23.topandroidrepositories.data.network.response.model.Item
+import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.view.model.SortType
+import java.text.SimpleDateFormat
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+
+private const val SERVER_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+private const val LOCAL_FORMAT = "MM-dd-yy HH:ss" // Format: month-day-year hour:seconds
+
+fun OffsetDateTime.toDateString(): String {
+    val formatter = DateTimeFormatter.ofPattern(LOCAL_FORMAT)
+    return formatter.format(this)
+}
+
+fun String.toOffsetDateTime(): OffsetDateTime? = try {
+    val format = SimpleDateFormat(SERVER_FORMAT)
+    val date = format.parse(this)
+    date?.toInstant()?.atOffset(ZoneOffset.UTC)
+} catch (e: Exception) {
+    e.printStackTrace()
+    null
+}
+
+fun List<Item>?.mapList(): List<GitRepository> {
+    val arrayList = ArrayList<GitRepository>()
+    this?.forEach { model ->
+        arrayList.add(
+            GitRepository(
+                id = model.id,
+                name = model.name,
+                description = model.description,
+                date = model.updatedAt?.toOffsetDateTime(),
+                image = model.owner?.avatarUrl,
+                star = model.stargazersCount
+            )
+        )
+    }
+    return arrayList
+}
 
 inline fun debugMode(block: () -> Unit) {
     if (BuildConfig.DEBUG) {
@@ -34,4 +75,12 @@ fun AppCompatActivity.replaceFragment(
             replace(frameId, fragment, fragment.javaClass.simpleName)
         }
     }
+}
+
+fun Int.toSortType() = when (this) {
+    SortType.DateAsc.type -> SortType.DateAsc
+    SortType.DateDesc.type -> SortType.DateDesc
+    SortType.StarAsc.type -> SortType.StarAsc
+    SortType.StarDesc.type -> SortType.StarDesc
+    else -> SortType.None
 }

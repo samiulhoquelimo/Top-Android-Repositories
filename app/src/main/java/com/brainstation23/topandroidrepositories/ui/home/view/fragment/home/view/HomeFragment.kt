@@ -35,7 +35,6 @@ class HomeFragment : DaggerFragment(), HomeFragmentMVPView {
     private var event: ((event: HomeEvent) -> Unit)? = null
 
     companion object {
-        const val TAG: String = "HomeFragment"
         fun newInstance(): HomeFragment = HomeFragment()
     }
 
@@ -90,8 +89,10 @@ class HomeFragment : DaggerFragment(), HomeFragmentMVPView {
         popup.inflate(R.menu.menu_pop_sort)
         popup.setOnMenuItemClickListener { item: MenuItem? ->
             when (item?.itemId) {
-                R.id.action_sort_by_date -> presenter.sort(SortType.Date)
-                R.id.action_sort_by_star -> presenter.sort(SortType.Star)
+                R.id.action_sort_by_date_asc -> presenter.fetch(SortType.DateAsc)
+                R.id.action_sort_by_date_desc -> presenter.fetch(SortType.DateDesc)
+                R.id.action_sort_by_star_asc -> presenter.fetch(SortType.StarAsc)
+                R.id.action_sort_by_star_desc -> presenter.fetch(SortType.StarDesc)
             }
             true
         }

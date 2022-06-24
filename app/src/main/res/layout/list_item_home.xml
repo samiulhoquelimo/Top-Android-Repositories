@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,40 +7,57 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvName"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/MaterialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:padding="@dimen/_4sdp"
-        android:textColor="@color/s2"
-        android:textSize="@dimen/_16ssp"
-        app:fontFamily="@font/depth_600"
-        tools:text="@tools:sample/lorem/random" />
+        android:layout_margin="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:padding="@dimen/_4sdp"
-        android:textColor="@color/s1"
-        android:textSize="@dimen/_12ssp"
-        app:fontFamily="@font/depth_600"
-        tools:text="@tools:sample/lorem/random" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:orientation="vertical">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvStar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:padding="@dimen/_4sdp"
-        android:textColor="@color/s3"
-        android:textSize="@dimen/_14ssp"
-        app:fontFamily="@font/depth_600"
-        tools:text="@tools:sample/lorem/random" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_4sdp"
+                android:textColor="@color/s2"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/depth_600"
+                tools:maxLines="3"
+                tools:text="@tools:sample/lorem/random" />
 
-</LinearLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_4sdp"
+                android:textColor="@color/s1"
+                android:textSize="@dimen/_12ssp"
+                app:fontFamily="@font/depth_600"
+                tools:maxLines="3"
+                tools:text="@tools:sample/lorem/random" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvStar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_4sdp"
+                android:textColor="@color/s3"
+                android:textSize="@dimen/_14ssp"
+                app:fontFamily="@font/depth_600"
+                tools:maxLines="3"
+                tools:text="@tools:sample/lorem/random" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

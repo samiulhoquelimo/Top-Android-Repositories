@@ -11,6 +11,18 @@ interface GitRepositoryDao {
     @Query("SELECT * FROM git_repository")
     fun load(): List<GitRepository>
 
+    @Query("SELECT * FROM git_repository ORDER BY date ASC")
+    fun loadSortByDateAsc(): List<GitRepository>
+
+    @Query("SELECT * FROM git_repository ORDER BY date DESC")
+    fun loadSortByDateDesc(): List<GitRepository>
+
+    @Query("SELECT * FROM git_repository ORDER BY star ASC")
+    fun loadSortByStarAsc(): List<GitRepository>
+
+    @Query("SELECT * FROM git_repository ORDER BY star DESC")
+    fun loadSortByStarDesc(): List<GitRepository>
+
     @Query("SELECT * FROM git_repository WHERE id=:id limit 1")
     fun loadById(id: Int): GitRepository?
 
