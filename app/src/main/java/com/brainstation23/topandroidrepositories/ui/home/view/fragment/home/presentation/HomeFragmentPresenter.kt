@@ -38,7 +38,7 @@ class HomeFragmentPresenter<V : HomeFragmentMVPView, I : HomeFragmentMVPInteract
                 compositeDisposable.addAll(
                     searchApiCall()
                         .compose(schedulerProvider.ioToMainObservableScheduler())
-                        .subscribe(::saveToDb, ::handleApiError)
+                        .subscribe(::saveToDb, ::handleApiError, view::hideSwipeLoading)
                 )
             }
         }

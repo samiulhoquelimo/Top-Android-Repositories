@@ -5,4 +5,7 @@ import com.brainstation23.topandroidrepositories.ui.home.view.fragment.details.i
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.details.view.DetailsFragmentMVPView
 
 interface DetailsFragmentMVPPresenter<V : DetailsFragmentMVPView, I : DetailsFragmentMVPInteractor> :
-    MVPPresenter<V, I>
+    MVPPresenter<V, I> {
+
+    fun fetch()
+}

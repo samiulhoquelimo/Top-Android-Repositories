@@ -74,7 +74,7 @@ data class Item(
     @Expose @SerializedName("archived") var archived: Boolean? = null,
     @Expose @SerializedName("disabled") var disabled: Boolean? = null,
     @Expose @SerializedName("open_issues_count") var openIssuesCount: Int? = null,
-    @Expose @SerializedName("license") var license: String? = null,
+    @Expose @SerializedName("license") var license: Licence? = null,
     @Expose @SerializedName("allow_forking") var allowForking: Boolean? = null,
     @Expose @SerializedName("is_template") var isTemplate: Boolean? = null,
     @Expose @SerializedName("topics") var topics: ArrayList<String> = arrayListOf(),

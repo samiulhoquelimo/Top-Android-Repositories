@@ -100,9 +100,8 @@ dependencies {
     implementation("androidx.room:room-rxjava2:2.4.2")
     kapt("androidx.room:room-compiler:2.4.2")
 
-    // Glide
-    implementation("com.github.bumptech.glide:glide:4.13.0")
-    kapt("com.github.bumptech.glide:compiler:4.13.0")
+    // picasso
+    implementation("com.squareup.picasso:picasso:2.71828")
 
     // Fresco
     implementation("com.facebook.fresco:fresco:2.6.0")
@@ -123,6 +122,9 @@ dependencies {
 
     // Spin-Kit
     implementation("com.github.ybq:Android-SpinKit:1.4.0")
+
+    // Circle Image View
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
     // Unit testing
     testImplementation("junit:junit:4.13.2")

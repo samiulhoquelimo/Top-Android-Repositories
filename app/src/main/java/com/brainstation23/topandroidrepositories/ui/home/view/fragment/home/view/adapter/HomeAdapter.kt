@@ -39,10 +39,13 @@ class HomeAdapter(
         }
 
         override fun onBind(position: Int) {
-            val (_, name, _, date, _, star) = data[position]
-            binding.tvName.text = name
-            binding.tvDate.text = date
-            binding.tvStar.text = star.toString()
+            val (id, name, _, date, _, star) = data[position]
+            binding.apply {
+                tvName.text = name
+                tvDate.text = date
+                tvStar.text = star.toString()
+            }
+            itemView.setOnClickListener { id?.let { id_ -> click?.invoke(id_) } }
         }
     }
 

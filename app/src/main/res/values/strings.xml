@@ -15,4 +15,10 @@
     <string name="success">Success</string>
     <string name="cached">Cached</string>
     <string name="failed">Failed</string>
+    <string name="go_back">Go back</string>
+    <string name="details">Details</string>
+    <string name="exit_application">Exit application</string>
+    <string name="exit_application_message">Are you sure you want to exit application?</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
 </resources>

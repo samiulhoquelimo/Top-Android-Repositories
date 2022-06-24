@@ -53,7 +53,6 @@ abstract class BasePresenter<V : MVPView, I : MVPInteractor> internal constructo
             val errorMessage: UiText = when (anError) {
                 null -> UiText.StringResource(R.string.api_default_error)
                 else -> when (anError.errorCode) {
-
                     0 -> when (anError.errorDetail) {
                         ANConstants.CONNECTION_ERROR ->
                             UiText.StringResource(R.string.connection_error)
@@ -63,7 +62,6 @@ abstract class BasePresenter<V : MVPView, I : MVPInteractor> internal constructo
                             UiText.StringResource(R.string.some_error)
                         else -> UiText.StringResource(R.string.api_default_error)
                     }
-
                     else -> when (anError.errorCode) {
                         HttpsURLConnection.HTTP_UNAUTHORIZED ->
                             UiText.StringResource(R.string.unauthorized_access)

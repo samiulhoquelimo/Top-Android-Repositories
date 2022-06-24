@@ -13,4 +13,17 @@ class DetailsFragmentPresenter<V : DetailsFragmentMVPView, I : DetailsFragmentMV
     disposable: CompositeDisposable
 ) : BasePresenter<V, I>(
     interactor = interactor, schedulerProvider = schedulerProvider, compositeDisposable = disposable
-), DetailsFragmentMVPPresenter<V, I>
+), DetailsFragmentMVPPresenter<V, I> {
+
+    override fun fetch() {
+        getView()?.let { view ->
+            interactor?.apply {
+                compositeDisposable.addAll(
+                    fetchGitRepository(view.getGitRepositoryId())
+                        .compose(schedulerProvider.ioToMainObservableScheduler())
+                        .subscribe(view::parseData, ::throwIt)
+                )
+            }
+        }
+    }
+}

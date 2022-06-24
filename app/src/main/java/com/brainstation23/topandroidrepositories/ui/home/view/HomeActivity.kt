@@ -7,6 +7,7 @@ import com.brainstation23.topandroidrepositories.databinding.ActivityHomeBinding
 import com.brainstation23.topandroidrepositories.service.app.BrainApp
 import com.brainstation23.topandroidrepositories.ui.base.view.DaggerActivity
 import com.brainstation23.topandroidrepositories.ui.base.view.DaggerFragment
+import com.brainstation23.topandroidrepositories.ui.base.view.exit.view.ExitAppDialog
 import com.brainstation23.topandroidrepositories.ui.home.interactor.HomeMVPInteractor
 import com.brainstation23.topandroidrepositories.ui.home.presentation.HomeMVPPresenter
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.details.view.DetailsFragment
@@ -50,8 +51,21 @@ class HomeActivity : DaggerActivity(), HomeMVPView {
     private fun fragment(homeEvent: HomeEvent): DaggerFragment = when (homeEvent) {
         is HomeEvent.Home -> HomeFragment.newInstance()
             .apply { event { event -> onEvent(event) } }
-        is HomeEvent.Details -> DetailsFragment.newInstance()
+        is HomeEvent.Details -> DetailsFragment.newInstance(homeEvent.id)
             .apply { event { event -> onEvent(event) } }
+    }
+
+    override fun onBackPressed() {
+        if (BrainApp.navEvent != HomeEvent.Home) {
+            onEvent(HomeEvent.Home)
+        } else {
+            val dialog = ExitAppDialog.newInstance()
+            dialog.exit {
+                BrainApp.navEvent = HomeEvent.Home
+                this@HomeActivity.finish()
+            }
+            dialog.show(supportFragmentManager, ExitAppDialog.TAG)
+        }
     }
 
     override fun onDestroy() {

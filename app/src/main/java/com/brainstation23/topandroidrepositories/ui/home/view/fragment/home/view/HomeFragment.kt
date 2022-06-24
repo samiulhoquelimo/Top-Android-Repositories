@@ -18,7 +18,6 @@ import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.pres
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.view.adapter.HomeAdapter
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.view.model.SortType
 import com.brainstation23.topandroidrepositories.ui.home.view.model.HomeEvent
-import timber.log.Timber
 import javax.inject.Inject
 
 class HomeFragment : DaggerFragment(), HomeFragmentMVPView {
@@ -53,7 +52,6 @@ class HomeFragment : DaggerFragment(), HomeFragmentMVPView {
     }
 
     override fun setup(view: View) {
-        Timber.d("LIMO setup:")
         binding.apply {
             listRepository.apply {
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -66,17 +64,24 @@ class HomeFragment : DaggerFragment(), HomeFragmentMVPView {
             swipeRefreshLayout.setOnRefreshListener { presenter.request() }
 
             ivSort.setOnClickListener { popup() }
+            ivSync.setOnClickListener { presenter.request() }
         }
         presenter.fetch()
     }
 
     override fun parseData(data: List<GitRepository>) {
-        Timber.d("LIMO Size: ${data.size}")
         adapter.addDataToList(data)
     }
 
+    override fun showSwipeLoading() {
+        binding.swipeRefreshLayout.isRefreshing = true
+    }
+
+    override fun hideSwipeLoading() {
+        binding.swipeRefreshLayout.isRefreshing = false
+    }
+
     private fun details(id: Int) {
-        Timber.d("LIMO details:")
         event?.invoke(HomeEvent.Details(id))
     }
 

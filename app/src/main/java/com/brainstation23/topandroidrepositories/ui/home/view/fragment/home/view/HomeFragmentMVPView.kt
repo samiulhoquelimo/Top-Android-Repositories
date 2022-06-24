@@ -6,4 +6,8 @@ import com.brainstation23.topandroidrepositories.ui.base.view.MVPView
 interface HomeFragmentMVPView : MVPView {
 
     fun parseData(data: List<GitRepository>)
+
+    fun showSwipeLoading()
+
+    fun hideSwipeLoading()
 }
