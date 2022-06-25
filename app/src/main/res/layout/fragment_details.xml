@@ -54,69 +54,83 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_bar">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MaterialCardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivUserImage"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_120sdp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_16sdp"
-                android:src="@drawable/ic_profile_user"
-                app:civ_border_color="@color/p1"
-                app:civ_border_width="@dimen/_2sdp"
-                app:civ_circle_background_color="@color/p3" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvName"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/_4sdp"
-                android:textColor="@color/p3"
-                android:textSize="@dimen/_20ssp"
-                app:fontFamily="@font/depth_800"
-                tools:text="@tools:sample/full_names" />
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_8sdp"
+                android:orientation="vertical">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvLastUpdate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/_4sdp"
-                android:textColor="@color/p3"
-                android:textSize="@dimen/_12ssp"
-                app:fontFamily="@font/depth_400"
-                tools:text="@tools:sample/full_names" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ivUserImage"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_16sdp"
+                    android:src="@drawable/ic_profile_user"
+                    app:civ_border_color="@color/p1"
+                    app:civ_border_width="@dimen/_2sdp"
+                    app:civ_circle_background_color="@color/s2" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvStar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:drawableStart="@drawable/ic_star"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_4sdp"
-                android:textColor="@color/p3"
-                android:textSize="@dimen/_10ssp"
-                app:fontFamily="@font/depth_700"
-                tools:text="@tools:sample/full_names" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:textColor="@color/p3"
+                    android:textSize="@dimen/_20ssp"
+                    app:fontFamily="@font/depth_800"
+                    tools:text="@tools:sample/full_names" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_16sdp"
-                android:textColor="@color/p3"
-                android:textSize="@dimen/_20ssp"
-                app:fontFamily="@font/depth_600"
-                tools:maxLines="8"
-                tools:text="@tools:sample/lorem/random" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLastUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:textColor="@color/p3"
+                    android:textSize="@dimen/_12ssp"
+                    app:fontFamily="@font/depth_400"
+                    tools:text="@tools:sample/full_names" />
 
-        </LinearLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableStart="@drawable/ic_star"
+                    android:drawablePadding="@dimen/_4sdp"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_4sdp"
+                    android:textColor="@color/s2"
+                    android:textSize="@dimen/_10ssp"
+                    app:fontFamily="@font/depth_700"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:textColor="@color/p3"
+                    android:textSize="@dimen/_20ssp"
+                    app:fontFamily="@font/depth_600"
+                    tools:maxLines="8"
+                    tools:text="@tools:sample/lorem/random" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.core.widget.NestedScrollView>
 

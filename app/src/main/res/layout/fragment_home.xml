@@ -44,7 +44,8 @@
             app:layout_constraintEnd_toStartOf="@+id/iv_sort"
             app:layout_constraintStart_toEndOf="@+id/tv_title"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_sync" />
+            app:srcCompat="@drawable/ic_sync"
+            app:tooltipText="@string/sync" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_sort"
@@ -58,7 +59,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_sort" />
+            app:srcCompat="@drawable/ic_sort"
+            app:tooltipText="@string/sort" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -30,20 +30,20 @@ fun String.toOffsetDateTime(): OffsetDateTime? = try {
     null
 }
 
+fun Item.toGitRepository(): GitRepository {
+    return GitRepository(
+        id = this.id,
+        name = this.full_name,
+        description = this.description,
+        date = this.updated_at?.toOffsetDateTime(),
+        image = this.owner?.avatar_url,
+        star = this.stargazers_count
+    )
+}
+
 fun List<Item>?.mapList(): List<GitRepository> {
     val arrayList = ArrayList<GitRepository>()
-    this?.forEach { model ->
-        arrayList.add(
-            GitRepository(
-                id = model.id,
-                name = model.name,
-                description = model.description,
-                date = model.updatedAt?.toOffsetDateTime(),
-                image = model.owner?.avatarUrl,
-                star = model.stargazersCount
-            )
-        )
-    }
+    this?.forEach { model -> arrayList.add(model.toGitRepository()) }
     return arrayList
 }
 

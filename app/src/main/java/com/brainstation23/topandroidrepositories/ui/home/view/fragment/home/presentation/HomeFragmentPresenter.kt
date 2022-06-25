@@ -25,7 +25,7 @@ class HomeFragmentPresenter<V : HomeFragmentMVPView, I : HomeFragmentMVPInteract
                     else -> type
                 }
                 setSortType(sortType)
-                when (type) {
+                when (sortType) {
                     SortType.None -> compositeDisposable.add(
                         fetchGitRepository()
                             .compose(schedulerProvider.ioToMainObservableScheduler())
@@ -80,6 +80,4 @@ class HomeFragmentPresenter<V : HomeFragmentMVPView, I : HomeFragmentMVPInteract
             )
         }
     }
-
-
 }

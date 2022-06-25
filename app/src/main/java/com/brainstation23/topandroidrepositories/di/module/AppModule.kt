@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.androidnetworking.interceptors.HttpLoggingInterceptor
+import com.androidnetworking.interceptors.HttpLoggingInterceptor.Level
 import com.brainstation23.topandroidrepositories.BuildConfig
 import com.brainstation23.topandroidrepositories.data.database.AppDatabase
 import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepositoryRepo
@@ -89,7 +90,7 @@ class AppModule {
             addNetworkInterceptor(StethoInterceptor())
             addNetworkInterceptor(HttpLoggingInterceptor { message ->
                 Timber.tag(NetworkConstants.API).d(message)
-            })
+            }.apply { level = Level.BODY })
         }
         connectTimeout(NetworkConstants.TIMEOUT_CONNECTION, TimeUnit.SECONDS)
         readTimeout(NetworkConstants.TIMEOUT_READ, TimeUnit.SECONDS)
@@ -98,8 +99,7 @@ class AppModule {
     }
 
     @Provides
-    internal fun provideGson(): Gson = GsonBuilder().serializeNulls().setLenient()
-        .excludeFieldsWithoutExposeAnnotation().create()
+    internal fun provideGson(): Gson = GsonBuilder().serializeNulls().create()
 
     @Provides
     internal fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()

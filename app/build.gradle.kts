@@ -129,6 +129,7 @@ dependencies {
     // Unit testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:4.5.1")
+    testImplementation("com.google.truth:truth:1.1.3")
 
     // Instrumentation testing
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
@@ -143,6 +144,7 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test:rules:1.4.0")
     androidTestImplementation("androidx.test:core:1.4.0")
+    androidTestImplementation("com.google.truth:truth:1.1.3")
 }
 
 // Define versions in a single place
