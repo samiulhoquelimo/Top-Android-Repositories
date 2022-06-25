@@ -31,12 +31,13 @@ fun String.toOffsetDateTime(): OffsetDateTime? = try {
 }
 
 fun Item.toGitRepository(): GitRepository {
+    val url = this.owner?.avatar_url
     return GitRepository(
         id = this.id,
         name = this.full_name,
         description = this.description,
         date = this.updated_at?.toOffsetDateTime(),
-        image = this.owner?.avatar_url,
+        image = url,
         star = this.stargazers_count
     )
 }

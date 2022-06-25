@@ -2,7 +2,7 @@ package com.brainstation23.topandroidrepositories
 
 import com.brainstation23.topandroidrepositories.data.network.response.model.Item
 import com.brainstation23.topandroidrepositories.data.network.response.model.Owner
-import com.brainstation23.topandroidrepositories.data.network.response.model.toGitRepository
+import com.brainstation23.topandroidrepositories.utils.extension.toGitRepository
 import com.brainstation23.topandroidrepositories.utils.extension.toOffsetDateTime
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
