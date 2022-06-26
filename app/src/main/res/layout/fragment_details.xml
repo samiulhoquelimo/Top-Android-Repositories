@@ -76,10 +76,10 @@
                     android:layout_height="@dimen/_120sdp"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/_16sdp"
-                    android:src="@drawable/ic_profile_user"
-                    app:civ_border_color="@color/p1"
+                    android:src="@drawable/ic_guthub"
+                    app:civ_border_color="@color/p3"
                     app:civ_border_width="@dimen/_2sdp"
-                    app:civ_circle_background_color="@color/s2" />
+                    app:civ_circle_background_color="@color/white" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvName"

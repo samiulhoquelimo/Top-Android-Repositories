@@ -3,6 +3,7 @@ package com.brainstation23.topandroidrepositories.ui.home.view.fragment.details.
 import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepository
 import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepositoryRepo
 import com.brainstation23.topandroidrepositories.data.network.ApiHelper
+import com.brainstation23.topandroidrepositories.data.network.response.model.Owner
 import com.brainstation23.topandroidrepositories.data.preferences.PreferenceHelper
 import com.brainstation23.topandroidrepositories.ui.base.interactor.BaseInteractor
 import io.reactivex.Observable
@@ -17,4 +18,6 @@ class DetailsFragmentInteractor @Inject constructor(
 
     override fun fetchGitRepository(id: Int): Observable<GitRepository> =
         gitRepositoryRepo.loadById(id)
+
+    override fun usersApiCall(login: String): Observable<Owner> = apiHelper.usersApiCall(login)
 }

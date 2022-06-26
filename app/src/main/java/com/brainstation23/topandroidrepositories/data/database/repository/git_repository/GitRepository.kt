@@ -14,5 +14,6 @@ data class GitRepository(
     @ColumnInfo(name = "description") var description: String? = null,
     @ColumnInfo(name = "date") var date: OffsetDateTime? = null,
     @ColumnInfo(name = "image") var image: String? = null,
+    @ColumnInfo(name = "login") var login: String? = null,
     @ColumnInfo(name = "star") var star: Int? = null
 )

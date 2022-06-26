@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.brainstation23.topandroidrepositories.R
 import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepository
+import com.brainstation23.topandroidrepositories.data.network.response.model.Owner
 import com.brainstation23.topandroidrepositories.databinding.FragmentDetailsBinding
 import com.brainstation23.topandroidrepositories.ui.base.view.DaggerFragment
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.details.interactor.DetailsFragmentMVPInteractor
@@ -56,7 +57,12 @@ class DetailsFragment : DaggerFragment(), DetailsFragmentMVPView {
         binding.apply {
             with(data) {
                 image?.let { image -> load(image) }
-                name?.let { name -> tvName.text = name }
+                name?.let { name ->
+                    tvName.text = name
+                    if (image.isNullOrEmpty()) {
+                        presenter.request(name.split("/").first())
+                    }
+                }
                 date?.let { date -> tvLastUpdate.text = date.toDateString() }
                 star?.let { star -> tvStar.text = star.toString() }
                 description?.let { description -> tvDescription.text = description }
@@ -64,9 +70,13 @@ class DetailsFragment : DaggerFragment(), DetailsFragmentMVPView {
         }
     }
 
+    override fun parseOwner(owner: Owner) {
+        owner.avatar_url?.let { image -> load(image) }
+    }
+
     private fun load(image: String) {
         Picasso.get().load(image)
-            .error(R.drawable.ic_profile_user)
+            .error(R.drawable.ic_guthub)
             .into(binding.ivUserImage)
     }
 

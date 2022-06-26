@@ -42,7 +42,7 @@ class HomeAdapter(
         }
 
         override fun onBind(position: Int) {
-            val (id, name, _, date, _, star) = data[position]
+            val (id, name, _, date, _, _, star) = data[position]
             binding.apply {
                 tvName.text = name
                 tvDate.text = date?.toDateString()

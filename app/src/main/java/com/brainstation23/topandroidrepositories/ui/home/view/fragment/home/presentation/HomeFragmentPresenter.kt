@@ -61,6 +61,7 @@ class HomeFragmentPresenter<V : HomeFragmentMVPView, I : HomeFragmentMVPInteract
             if (!view.isNetworkConnected()) {
                 return
             }
+            view.showSwipeLoading()
             interactor?.apply {
                 compositeDisposable.addAll(
                     searchApiCall()

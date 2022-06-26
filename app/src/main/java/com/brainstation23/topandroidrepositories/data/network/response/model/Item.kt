@@ -1,7 +1,5 @@
 package com.brainstation23.topandroidrepositories.data.network.response.model
 
-import com.brainstation23.topandroidrepositories.data.database.repository.git_repository.GitRepository
-import com.brainstation23.topandroidrepositories.utils.extension.toOffsetDateTime
 import com.google.gson.annotations.SerializedName
 
 data class Item(

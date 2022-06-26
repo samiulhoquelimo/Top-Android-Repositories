@@ -8,4 +8,6 @@ interface DetailsFragmentMVPPresenter<V : DetailsFragmentMVPView, I : DetailsFra
     MVPPresenter<V, I> {
 
     fun fetch()
+
+    fun request(repo: String)
 }

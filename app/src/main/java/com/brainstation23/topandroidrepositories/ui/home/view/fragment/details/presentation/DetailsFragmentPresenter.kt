@@ -26,4 +26,19 @@ class DetailsFragmentPresenter<V : DetailsFragmentMVPView, I : DetailsFragmentMV
             }
         }
     }
+
+    override fun request(repo: String) {
+        getView()?.let { view ->
+            if (!view.isNetworkConnected()) {
+                return
+            }
+            interactor?.apply {
+                compositeDisposable.addAll(
+                    usersApiCall(repo)
+                        .compose(schedulerProvider.ioToMainObservableScheduler())
+                        .subscribe(view::parseOwner, ::handleApiError)
+                )
+            }
+        }
+    }
 }

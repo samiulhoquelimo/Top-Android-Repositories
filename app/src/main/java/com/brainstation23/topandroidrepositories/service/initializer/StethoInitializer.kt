@@ -2,8 +2,8 @@ package com.brainstation23.topandroidrepositories.service.initializer
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.facebook.stetho.Stetho
 import com.brainstation23.topandroidrepositories.utils.extension.debugMode
+import com.facebook.stetho.Stetho
 
 class StethoInitializer : Initializer<Unit> {
 
