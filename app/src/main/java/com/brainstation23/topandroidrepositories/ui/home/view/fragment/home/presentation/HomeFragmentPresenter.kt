@@ -1,7 +1,9 @@
 package com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.presentation
 
+import com.brainstation23.topandroidrepositories.R
 import com.brainstation23.topandroidrepositories.data.network.response.GithubRepositoryResponse
 import com.brainstation23.topandroidrepositories.ui.base.presenter.BasePresenter
+import com.brainstation23.topandroidrepositories.ui.base.view.UiText
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.interactor.HomeFragmentMVPInteractor
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.view.HomeFragmentMVPView
 import com.brainstation23.topandroidrepositories.ui.home.view.fragment.home.view.model.SortType
@@ -68,6 +70,21 @@ class HomeFragmentPresenter<V : HomeFragmentMVPView, I : HomeFragmentMVPInteract
                         .compose(schedulerProvider.ioToMainObservableScheduler())
                         .subscribe(::saveToDb, ::handleApiError, view::hideSwipeLoading)
                 )
+            }
+        }
+    }
+
+    override fun checkCurrentSort() {
+        getView()?.let { view ->
+            interactor?.apply {
+                val uiText = when (getSortType()) {
+                    SortType.DateAsc -> UiText.StringResource(R.string.sort_by_date_asc)
+                    SortType.DateDesc -> UiText.StringResource(R.string.sort_by_date_desc)
+                    SortType.None -> UiText.StringResource(R.string.sorting_not_set)
+                    SortType.StarAsc -> UiText.StringResource(R.string.sort_by_star_asc)
+                    SortType.StarDesc -> UiText.StringResource(R.string.sort_by_star_desc)
+                }
+                view.success(uiText)
             }
         }
     }

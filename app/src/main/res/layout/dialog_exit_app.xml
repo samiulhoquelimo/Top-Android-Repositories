@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:focusable="false"
         android:padding="@dimen/_16sdp"
-        android:text="@string/ok"
+        android:text="@string/yes"
         android:textColor="@color/p3"
         android:textSize="@dimen/_14ssp"
         app:fontFamily="@font/depth_700"

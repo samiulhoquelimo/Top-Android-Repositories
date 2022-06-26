@@ -11,4 +11,6 @@ interface HomeFragmentMVPPresenter<V : HomeFragmentMVPView, I : HomeFragmentMVPI
     fun fetch(type: SortType = SortType.None)
 
     fun request()
+
+    fun checkCurrentSort()
 }

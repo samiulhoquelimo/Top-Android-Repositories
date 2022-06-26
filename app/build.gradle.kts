@@ -106,6 +106,9 @@ dependencies {
     // Fresco
     implementation("com.facebook.fresco:fresco:2.6.0")
 
+    // Photo Drawee View
+    implementation("me.relex:photodraweeview:2.1.0")
+
     // Ste-tho
     implementation("com.facebook.stetho:stetho:1.6.0")
     implementation("com.facebook.stetho:stetho-okhttp3:1.6.0")

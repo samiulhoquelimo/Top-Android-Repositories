@@ -9,6 +9,7 @@
     <string name="some_error">Some Error Occurred!</string>
     <string name="api_retry_error">Please retry</string>
     <string name="unauthorized_access">Unauthorized access</string>
+    <string name="sorting_not_set">Sorting not set</string>
     <string name="sort_by_date_asc">Sort by date asc</string>
     <string name="sort_by_date_desc">Sort by date desc</string>
     <string name="sort_by_star_asc">Sort by star asc</string>
@@ -22,5 +23,6 @@
     <string name="exit_application">Exit application</string>
     <string name="exit_application_message">Are you sure you want to exit application?</string>
     <string name="cancel">Cancel</string>
-    <string name="ok">Ok</string>
+    <string name="yes">Yes</string>
+    <string name="preview">Preview</string>
 </resources>

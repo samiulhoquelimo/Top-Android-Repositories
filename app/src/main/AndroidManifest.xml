@@ -25,6 +25,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.preview.view.PreviewActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
         <!--Initializer-->
         <provider
             android:name="androidx.startup.InitializationProvider"

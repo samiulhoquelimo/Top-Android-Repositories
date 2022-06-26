@@ -64,6 +64,10 @@ class HomeFragment : DaggerFragment(), HomeFragmentMVPView {
 
             ivSort.setOnClickListener { popup() }
             ivSync.setOnClickListener { presenter.request() }
+            ivSort.setOnLongClickListener {
+                presenter.checkCurrentSort()
+                return@setOnLongClickListener true
+            }
         }
         presenter.fetch()
     }
