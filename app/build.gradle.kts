@@ -75,9 +75,9 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("androidx.startup:startup-runtime:1.1.1")
 
-    // Jetpack navigation
-    implementation("androidx.navigation:navigation-fragment:2.5.0-rc02")
-    implementation("androidx.navigation:navigation-ui:2.5.0-rc02")
+    // Jetpack Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.2")
 
     // Dependency injection
     implementation("com.google.dagger:dagger-android:2.42")
@@ -122,9 +122,6 @@ dependencies {
 
     // Timber
     implementation("com.jakewharton.timber:timber:5.0.1")
-
-    // Spin-Kit
-    implementation("com.github.ybq:Android-SpinKit:1.4.0")
 
     // Circle Image View
     implementation("de.hdodenhof:circleimageview:3.1.0")
